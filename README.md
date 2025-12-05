@@ -43,7 +43,7 @@
 
 
 ## 4. Upload, Train, Publish, and Test (Steps 01–04)
-- Place your training images in the `images/` folder.
+- By default, I have created a few test images, if you need, Place your additional training images in the `images/` folder.
 - Then run the following commands in order:
 	```
 	python 01_upload_files_for_training.py
