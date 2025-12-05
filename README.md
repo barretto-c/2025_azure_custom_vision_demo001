@@ -4,8 +4,6 @@
 ## 1. Create a Custom Vision Project
 - Go to the [Azure Custom Vision portal](https://customvision.ai/).
 - Create a new project and select the **Food** domain.
-- Upload and tag your images (minimum 5 images per tag).
-- Train your model and publish an iteration (e.g., `Iteration1`).
 
 ## 2. Set Up Your Local Environment
 - Clone this repository.
@@ -29,7 +27,7 @@
 ## 3. Configure Environment Variables
 - Copy your keys and IDs from the Azure portal:
 	- **Training Key**
-	- **Prediction Key**
+	- **Prediction Key** - Only after prediction
 	- **Endpoint URL** (use the Prediction endpoint for prediction)
 	- **Project ID**
 	- **Published Iteration Name**
@@ -43,19 +41,18 @@
 	PREDICTION_URL=https://<your-resource>-prediction.cognitiveservices.azure.com/customvision/v3.0/Prediction/<project-id>/classify/iterations/<iteration-name>/image
 	```
 
-## 4. Upload and Tag Images
+
+## 4. Upload, Train, Publish, and Test (Steps 01–04)
 - Place your training images in the `images/` folder.
-- Run `01_upload_files_for_training.py` to upload and tag images.
+- Then run the following commands in order:
+	```
+	python 01_upload_files_for_training.py
+	python 02_train_and_evaluate.py
+	python 03_publish_model.py
+	python 04_test_predictionl.py
+	```
+- For prediction, place a test image in the `test/` folder (e.g., `fruit_apple_test.jpg`).
 
-## 5. Train and Evaluate the Model
-- Run `02_train_and_evaluate.py` to start training and print evaluation metrics.
-
-## 6. Publish the Model
-- Run `03_publish_model.py` to publish the latest trained iteration for prediction.
-
-## 7. Test Prediction
-- Place a test image in the `test/` folder (e.g., `fruit_apple_test.jpg`).
-- Run `04_test_predictionl.py` to send the image to the prediction endpoint and print results.
 
 ## Troubleshooting
 - Make sure your keys and endpoints are correct in `.env`.
